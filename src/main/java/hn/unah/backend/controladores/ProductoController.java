@@ -2,6 +2,8 @@ package hn.unah.backend.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +17,11 @@ public class ProductoController {
     
     @Autowired
     private ProductoServiceImpl productoServiceImpl;
+
+    @PostMapping("/crearProducto")
+    public producto crearProducto(@RequestBody producto nvoProducto){
+        return this.productoServiceImpl.creaProducto(nvoProducto);
+    }
 
     @GetMapping("/obtener/todos")
     public List<producto> obtenerTodos(){

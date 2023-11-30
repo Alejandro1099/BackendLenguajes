@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +18,11 @@ public class ComercioController {
     
     @Autowired
     private ComercioServiceImpl comercioServiceImpl;
+
+    @PostMapping("/crearComercio")
+    public comercio crearComercio(@RequestBody comercio nvoComerico){
+        return this.comercioServiceImpl.crearComercio(nvoComerico);
+    }
 
     @GetMapping("/obtener/todos")
     public List<comercio> obtenerTodos(){
