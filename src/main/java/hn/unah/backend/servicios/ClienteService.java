@@ -8,5 +8,7 @@ public interface ClienteService {
     
     public cliente crearCliente(cliente nvoCliente); //crea un nuevo cliente
 
+    public String eliminarClienteporId(int numeroCliente);//elimina por id los clientes
+
     public List<cliente> obtenerTodosClientes(); //lista todos los clientes en la BD
 }

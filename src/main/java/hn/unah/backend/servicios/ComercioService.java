@@ -8,4 +8,6 @@ public interface ComercioService {
     public comercio crearComercio(comercio nvComercio);//crea un nuevo comercio
 
     public List<comercio> obtenerTodosComercios();
+
+    public String eliminarComercioporId(int numeroComercio);
 }

@@ -24,4 +24,16 @@ public class ProductoServiceImpl implements ProductoService {
     public List<producto> obtenerTodosProductos(){
         return this.productoRepository.findAll();
     }
+
+    @Override
+    public String eliminarProductoporId(int numeroProducto){
+        producto productoDelete = this.productoRepository.findById(numeroProducto).get();
+
+        if(productoDelete != null){
+            this.productoRepository.delete(productoDelete);
+            return "Se ha eliminado el producto: " + productoDelete.getIdproducto(); 
+        }
+
+        return "No existe el producto con ese id de identificacion: " + numeroProducto;
+    }
 }

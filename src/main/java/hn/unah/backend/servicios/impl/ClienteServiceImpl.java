@@ -1,5 +1,6 @@
 package hn.unah.backend.servicios.impl;
 
+//import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -17,6 +18,18 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public cliente crearCliente(cliente nvoCliente){
         return ClienteRepository.save(nvoCliente);
+    }
+
+    @Override
+    public String eliminarClienteporId(int numeroCliente){
+        cliente cteEliminar = this.ClienteRepository.findById(numeroCliente).get();
+
+        if(cteEliminar != null){
+            this.ClienteRepository.delete(cteEliminar);
+            return "Se ha eliminado el cliente: " + cteEliminar.getIdcliente(); 
+        }
+
+        return "No existe el cliente con dni: " + numeroCliente;
     }
 
     @Override

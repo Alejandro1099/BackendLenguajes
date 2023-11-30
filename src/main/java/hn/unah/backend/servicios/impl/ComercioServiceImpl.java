@@ -25,4 +25,16 @@ public class ComercioServiceImpl implements ComercioService{
         return this.comercioRepository.findAll();
     }
 
+    @Override
+    public String eliminarComercioporId(int numeroComercio) {
+        comercio comercioDelete = this.comercioRepository.findById(numeroComercio).get();
+        
+        if(comercioDelete != null){
+        this.comercioRepository.delete(comercioDelete);
+        return "Se ha eliminado el comercio: " + comercioDelete;
+        }
+
+        return "No existe el comercio especificado: "+ comercioDelete;
+    }
+
 }

@@ -23,4 +23,18 @@ public class MotoristaServiceImpl implements MotoristaService {
     public List<motorista> obtenerTodosMotoristas(){
         return this.MotoristaRepository.findAll();
     }
+
+    @Override
+    public String eliminarMotoristaporId(int numeroMotorista) {
+        motorista motoristaDelete = this.MotoristaRepository.findById(numeroMotorista).get();
+
+        if(motoristaDelete != null){
+            this.MotoristaRepository.delete(motoristaDelete);
+            return "Se ha eliminado el motorista con la id. " + motoristaDelete.getIdmotorista();
+        }
+
+        return "No existe este motorista que corresponda a esta Id:" + numeroMotorista;
+    }
+
+    
 }
