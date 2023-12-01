@@ -1,8 +1,13 @@
 package hn.unah.backend.modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,4 +32,7 @@ public class motorista {
     @Column(name = "apellido")
     private String apellido;
 
+    //un motorista puede tener muchos pedidos
+    @OneToMany(mappedBy = "motorista", cascade = CascadeType.ALL)
+    private List<pedidos> pedidos = new ArrayList<>();
 }

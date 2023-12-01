@@ -41,6 +41,9 @@ public class cliente {
     @Column(name = "direccion")
     private String direccion;
 
+    @Column(name = "contrasena")
+    private String contrasena;
+
     //UN CLIENTE PUEDE TENER MUCHOS PEDIDOS
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<pedidos> pedidos = new ArrayList<>();
